@@ -1,0 +1,11 @@
+Python Developer
+
+Required Skills
+
+Python
+HTML
+CSS
+SQL
+Flask
+Git
+Communication

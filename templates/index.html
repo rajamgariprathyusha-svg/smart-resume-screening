@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Resume Screening AI | ATS Analyzer</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">
+            🤖 Smart Resume AI
+        </div>
+
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="#upload">Analyze Resume</a>
+            <a href="/login">Login</a>
+        </div>
+    </nav>
+
+    ```html
+<!-- HERO SECTION -->
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="hero-badge">
+            ✨ AI-Powered Resume Analysis
+        </div>
+
+        <h1>
+            AI Resume Screening
+            <br>
+            <span>Powered by NLP & Machine Learning</span>
+        </h1>
+
+        <p>
+            Upload your Resume and Job Description to receive an
+            AI-powered ATS Match Score, Skill Analysis,
+            and Personalized Resume Suggestions.
+        </p>
+
+        <div class="hero-features">
+
+            <div class="feature-item">
+                <div class="feature-icon">🎯</div>
+                <div>
+                    <strong>ATS Score</strong>
+                    <small>Smart Resume Matching</small>
+                </div>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-icon">🧠</div>
+                <div>
+                    <strong>Skill Analysis</strong>
+                    <small>AI Skill Detection</small>
+                </div>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-icon">💡</div>
+                <div>
+                    <strong>Smart Suggestions</strong>
+                    <small>Improve Your Resume</small>
+                </div>
+            </div>
+
+        </div>
+
+        <a href="#upload" class="hero-button-link">
+            <button type="button" class="hero-button">
+                Analyze Resume →
+            </button>
+        </a>
+
+        <div class="hero-trust">
+            🔒 Your resume is analyzed securely
+        </div>
+
+    </div>
+
+</section>
+
+
+        <!-- Upload Card -->
+        <div class="upload-card" id="upload">
+
+            <h2>📄 Upload Documents</h2>
+
+            <form action="/analyze" method="POST" enctype="multipart/form-data">
+
+                <label for="resume">
+                    Resume (PDF)
+                </label>
+
+                <input
+                    type="file"
+                    id="resume"
+                    name="resume"
+                    accept=".pdf"
+                    required>
+
+                <label for="job_description">
+                    Job Description (.txt)
+                </label>
+
+                <input
+                    type="file"
+                    id="job_description"
+                    name="job_description"
+                    accept=".txt"
+                    required>
+
+                <button
+                    type="submit"
+                    class="analyze-btn">
+                    🔍 Analyze Resume
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+    <!-- Features -->
+    <section class="features">
+
+        <div class="feature-card">
+            <h3>⭐ ATS Match Score</h3>
+            <p>Measure how well your resume matches the job description.</p>
+        </div>
+
+        <div class="feature-card">
+            <h3>📊 Skill Analysis</h3>
+            <p>Identify matched and missing skills instantly.</p>
+        </div>
+
+        <div class="feature-card">
+            <h3>💡 AI Suggestions</h3>
+            <p>Receive smart recommendations to improve your resume.</p>
+        </div>
+
+        <div class="feature-card">
+            <h3>⚡ Instant Report</h3>
+            <p>Generate a professional resume analysis within seconds.</p>
+        </div>
+
+    </section>
+
+</body>
+
+</html>

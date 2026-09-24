@@ -1,0 +1,1003 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Create Account | ResumeAI</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background:
+                radial-gradient(circle at 10% 20%, rgba(59,130,246,0.20), transparent 30%),
+                radial-gradient(circle at 90% 80%, rgba(139,92,246,0.22), transparent 30%),
+                linear-gradient(135deg, #050b16, #0b1220, #10172a);
+
+            color: #f8fafc;
+            overflow-x: hidden;
+        }
+
+        /* Background circles */
+
+        body::before,
+        body::after {
+            content: "";
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(2px);
+            z-index: -1;
+        }
+
+        body::before {
+            width: 250px;
+            height: 250px;
+            background: rgba(59,130,246,0.12);
+            top: -80px;
+            left: -80px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        body::after {
+            width: 300px;
+            height: 300px;
+            background: rgba(139,92,246,0.12);
+            bottom: -100px;
+            right: -100px;
+            animation: float 7s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-25px);
+            }
+        }
+
+        /* Main container */
+
+        .container {
+            width: 950px;
+            max-width: 95%;
+            min-height: 620px;
+
+            display: flex;
+
+            background: rgba(17, 28, 46, 0.88);
+
+            border: 1px solid rgba(255,255,255,0.10);
+
+            border-radius: 28px;
+
+            box-shadow:
+                0 25px 70px rgba(0,0,0,0.45),
+                inset 0 1px 1px rgba(255,255,255,0.05);
+
+            backdrop-filter: blur(20px);
+
+            overflow: hidden;
+
+            animation: appear 0.8s ease;
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.98);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* Left section */
+
+        .left {
+            width: 45%;
+            padding: 55px 45px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(59,130,246,0.16),
+                    rgba(139,92,246,0.12)
+                );
+
+            border-right: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .logo {
+            font-size: 27px;
+            font-weight: 700;
+
+            margin-bottom: 35px;
+
+            background: linear-gradient(
+                90deg,
+                #60a5fa,
+                #a78bfa
+            );
+
+            
+        }
+
+        .ai-icon {
+            width: 80px;
+            height: 80px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-size: 42px;
+
+            border-radius: 22px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(59,130,246,0.25),
+                    rgba(139,92,246,0.25)
+                );
+
+            border: 1px solid rgba(255,255,255,0.10);
+
+            margin-bottom: 25px;
+
+            box-shadow: 0 10px 30px rgba(59,130,246,0.15);
+
+            animation: iconFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes iconFloat {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+        .left h1 {
+            font-size: 34px;
+            line-height: 1.2;
+            margin-bottom: 18px;
+        }
+
+        .left h1 span {
+            background: linear-gradient(
+                90deg,
+                #60a5fa,
+                #a78bfa
+            );
+
+            
+        }
+
+        .description {
+            color: #94a3b8;
+            line-height: 1.7;
+            font-size: 15px;
+            margin-bottom: 30px;
+        }
+
+        /* Benefits */
+
+        .benefit {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            margin: 14px 0;
+
+            color: #cbd5e1;
+            font-size: 14px;
+        }
+
+        .check {
+            width: 25px;
+            height: 25px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            border-radius: 50%;
+
+            background: rgba(34,197,94,0.15);
+
+            color: #22c55e;
+
+            font-size: 13px;
+        }
+
+        /* Right section */
+
+        .right {
+            width: 55%;
+            padding: 50px 55px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .right h2 {
+            font-size: 29px;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: #94a3b8;
+            font-size: 14px;
+            margin-bottom: 28px;
+        }
+
+        /* Form */
+
+        .form-group {
+            margin-bottom: 17px;
+        }
+
+        .form-group label {
+            display: block;
+
+            font-size: 13px;
+            font-weight: 600;
+
+            color: #cbd5e1;
+
+            margin-bottom: 7px;
+        }
+
+        .input-box {
+            position: relative;
+        }
+
+        .input-icon {
+            position: absolute;
+
+            left: 15px;
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            font-size: 16px;
+
+            opacity: 0.8;
+        }
+
+        input {
+            width: 100%;
+
+            padding: 14px 15px 14px 45px;
+
+            border-radius: 12px;
+
+            border: 1px solid rgba(255,255,255,0.10);
+
+            outline: none;
+
+            background: rgba(255,255,255,0.045);
+
+            color: #ffffff;
+
+            font-size: 14px;
+
+            transition: 0.3s;
+        }
+
+        input::placeholder {
+            color: #64748b;
+        }
+
+        input:focus {
+            border-color: #3b82f6;
+
+            background: rgba(59,130,246,0.06);
+
+            box-shadow:
+                0 0 0 3px rgba(59,130,246,0.10);
+        }
+
+        /* Password */
+
+        .password-toggle {
+            position: absolute;
+
+            right: 15px;
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            cursor: pointer;
+
+            color: #94a3b8;
+
+            font-size: 15px;
+        }
+
+        /* Password strength */
+
+        .strength {
+            margin-top: 7px;
+
+            display: flex;
+            gap: 4px;
+        }
+
+        .strength span {
+            height: 3px;
+            flex: 1;
+
+            background: #263449;
+
+            border-radius: 5px;
+
+            transition: 0.3s;
+        }
+
+        .strength-text {
+            font-size: 11px;
+            color: #64748b;
+            margin-top: 5px;
+        }
+
+        /* Terms */
+
+        .terms {
+            display: flex;
+            align-items: flex-start;
+
+            gap: 9px;
+
+            margin: 15px 0 20px;
+
+            color: #94a3b8;
+
+            font-size: 12px;
+
+            line-height: 1.5;
+        }
+
+        .terms input {
+            width: auto;
+            margin-top: 2px;
+            accent-color: #3b82f6;
+        }
+
+        .terms a {
+            color: #60a5fa;
+            text-decoration: none;
+        }
+
+        .terms a:hover {
+            text-decoration: underline;
+        }
+
+        /* Create button */
+
+        .create-btn {
+            width: 100%;
+
+            padding: 15px;
+
+            border: none;
+
+            border-radius: 13px;
+
+            cursor: pointer;
+
+            color: white;
+
+            font-size: 15px;
+
+            font-weight: 700;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #2563eb,
+                    #7c3aed
+                );
+
+            box-shadow:
+                0 10px 25px rgba(59,130,246,0.20);
+
+            transition: 0.3s;
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+        .create-btn:hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 15px 35px rgba(59,130,246,0.30);
+        }
+
+        .create-btn:active {
+            transform: scale(0.98);
+        }
+
+        /* Divider */
+
+        .divider {
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            margin: 23px 0;
+
+            color: #64748b;
+
+            font-size: 12px;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: "";
+
+            flex: 1;
+
+            height: 1px;
+
+            background: rgba(255,255,255,0.08);
+        }
+
+        /* Social buttons */
+
+        .social-buttons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social {
+            flex: 1;
+
+            padding: 12px;
+
+            border-radius: 11px;
+
+            border: 1px solid rgba(255,255,255,0.10);
+
+            background: rgba(255,255,255,0.04);
+
+            color: #e2e8f0;
+
+            cursor: pointer;
+
+            font-size: 13px;
+
+            transition: 0.3s;
+        }
+
+        .social:hover {
+            background: rgba(255,255,255,0.08);
+
+            transform: translateY(-2px);
+        }
+
+        /* Login */
+
+        .login-text {
+            text-align: center;
+
+            margin-top: 22px;
+
+            color: #94a3b8;
+
+            font-size: 13px;
+        }
+
+        .login-text a {
+            color: #60a5fa;
+
+            font-weight: 600;
+
+            text-decoration: none;
+        }
+
+        .login-text a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+
+        @media (max-width: 800px) {
+
+            body {
+                padding: 20px 0;
+            }
+
+            .container {
+                flex-direction: column;
+
+                width: 92%;
+
+                min-height: auto;
+            }
+
+            .left,
+            .right {
+                width: 100%;
+            }
+
+            .left {
+                padding: 35px 30px;
+
+                border-right: none;
+
+                border-bottom: 1px solid rgba(255,255,255,0.08);
+            }
+
+            .right {
+                padding: 35px 30px;
+            }
+
+            .left h1 {
+                font-size: 28px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- LEFT SIDE -->
+
+    <div class="left">
+
+        <div class="logo">
+            🤖 ResumeAI
+        </div>
+
+        <div class="ai-icon">
+            🤖
+        </div>
+
+        <h1>
+            Start Your
+            <span>Career Journey</span>
+        </h1>
+
+        <p class="description">
+            Create your free ResumeAI account and let
+            Artificial Intelligence help you build a stronger,
+            smarter and ATS-friendly resume.
+        </p>
+
+        <div class="benefit">
+            <div class="check">✓</div>
+            AI-powered resume analysis
+        </div>
+
+        <div class="benefit">
+            <div class="check">✓</div>
+            ATS compatibility score
+        </div>
+
+        <div class="benefit">
+            <div class="check">✓</div>
+            Skill gap detection
+        </div>
+
+        <div class="benefit">
+            <div class="check">✓</div>
+            Personalized resume suggestions
+        </div>
+
+        <div class="benefit">
+            <div class="check">✓</div>
+            Downloadable analysis reports
+        </div>
+
+    </div>
+
+
+    <!-- RIGHT SIDE -->
+
+    <div class="right">
+
+        <h2>Create Your Account</h2>
+
+        <p class="subtitle">
+            Join ResumeAI and start improving your resume today.
+        </p>
+
+
+        <!-- Flask Registration Form -->
+
+        <form action="/register" method="POST" onsubmit="return validateForm()">
+
+            <!-- Username -->
+
+            <div class="form-group">
+
+                <label>Full Name</label>
+
+                <div class="input-box">
+
+                    <span class="input-icon">👤</span>
+
+                    <input
+                        type="text"
+                        name="username"
+                        id="username"
+                        placeholder="Enter your full name"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+            <!-- Email -->
+
+            <div class="form-group">
+
+                <label>Email Address</label>
+
+                <div class="input-box">
+
+                    <span class="input-icon">📧</span>
+
+                    <input
+                        type="email"
+                        name="email"
+                        id="email"
+                        placeholder="Enter your email address"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+            <!-- Password -->
+
+            <div class="form-group">
+
+                <label>Password</label>
+
+                <div class="input-box">
+
+                    <span class="input-icon">🔒</span>
+
+                    <input
+                        type="password"
+                        name="password"
+                        id="password"
+                        placeholder="Create a strong password"
+                        required
+                        oninput="checkPassword()"
+                    >
+
+                    <span
+                        class="password-toggle"
+                        onclick="togglePassword('password', this)"
+                    >
+                        👁
+                    </span>
+
+                </div>
+
+                <div class="strength">
+
+                    <span id="bar1"></span>
+                    <span id="bar2"></span>
+                    <span id="bar3"></span>
+                    <span id="bar4"></span>
+
+                </div>
+
+                <div class="strength-text" id="strengthText">
+                    Password strength
+                </div>
+
+            </div>
+
+
+            <!-- Confirm Password -->
+
+            <div class="form-group">
+
+                <label>Confirm Password</label>
+
+                <div class="input-box">
+
+                    <span class="input-icon">🔐</span>
+
+                    <input
+                        type="password"
+                        name="confirm_password"
+                        id="confirm_password"
+                        placeholder="Confirm your password"
+                        required
+                    >
+
+                    <span
+                        class="password-toggle"
+                        onclick="togglePassword('confirm_password', this)"
+                    >
+                        👁
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- Terms -->
+
+            <div class="terms">
+
+                <input
+                    type="checkbox"
+                    id="terms"
+                    required
+                >
+
+                <label for="terms">
+                    I agree to the
+                    <a href="#">Terms of Service</a>
+                    and
+                    <a href="#">Privacy Policy</a>.
+                </label>
+
+            </div>
+
+
+            <!-- Create Account -->
+
+            <button
+                type="submit"
+                class="create-btn"
+            >
+                🚀 Create Account
+            </button>
+
+        </form>
+
+
+        <!-- Divider -->
+
+        <div class="divider">
+            OR CONTINUE WITH
+        </div>
+
+
+        <!-- Social Login -->
+
+        <div class="social-buttons">
+
+            <button
+                type="button"
+                class="social"
+                onclick="googleLogin()"
+            >
+                🌐 Google
+            </button>
+
+            <button
+                type="button"
+                class="social"
+                onclick="githubLogin()"
+            >
+                💻 GitHub
+            </button>
+
+        </div>
+
+
+        <!-- Login -->
+
+        <div class="login-text">
+
+            Already have an account?
+
+            <a href="/login">
+                Login
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+    /* Show / Hide Password */
+
+    function togglePassword(id, element) {
+
+        const input = document.getElementById(id);
+
+        if (input.type === "password") {
+
+            input.type = "text";
+
+            element.textContent = "🙈";
+
+        } else {
+
+            input.type = "password";
+
+            element.textContent = "👁";
+
+        }
+
+    }
+
+
+    /* Password Strength */
+
+    function checkPassword() {
+
+        const password =
+            document.getElementById("password").value;
+
+        const bars = [
+            document.getElementById("bar1"),
+            document.getElementById("bar2"),
+            document.getElementById("bar3"),
+            document.getElementById("bar4")
+        ];
+
+        const text =
+            document.getElementById("strengthText");
+
+        bars.forEach(bar => {
+            bar.style.background = "#263449";
+        });
+
+
+        if (password.length === 0) {
+
+            text.textContent = "Password strength";
+
+        }
+
+        else if (password.length < 6) {
+
+            bars[0].style.background = "#ef4444";
+
+            text.textContent = "Weak password";
+
+        }
+
+        else if (
+            password.length >= 6 &&
+            password.length < 10
+        ) {
+
+            bars[0].style.background = "#f59e0b";
+            bars[1].style.background = "#f59e0b";
+
+            text.textContent = "Medium password";
+
+        }
+
+        else if (
+            password.match(/[A-Z]/) &&
+            password.match(/[0-9]/) &&
+            password.match(/[^A-Za-z0-9]/)
+        ) {
+
+            bars.forEach(bar => {
+                bar.style.background = "#22c55e";
+            });
+
+            text.textContent = "Strong password";
+
+        }
+
+        else {
+
+            bars[0].style.background = "#f59e0b";
+            bars[1].style.background = "#f59e0b";
+            bars[2].style.background = "#f59e0b";
+
+            text.textContent = "Good password";
+
+        }
+
+    }
+
+
+    /* Form Validation */
+
+    function validateForm() {
+
+        const password =
+            document.getElementById("password").value;
+
+        const confirmPassword =
+            document.getElementById("confirm_password").value;
+
+
+        if (password !== confirmPassword) {
+
+            alert("⚠️ Passwords do not match!");
+
+            return false;
+
+        }
+
+
+        if (password.length < 6) {
+
+            alert(
+                "⚠️ Password must contain at least 6 characters."
+            );
+
+            return false;
+
+        }
+
+
+        return true;
+
+    }
+
+
+    /* Google */
+
+    function googleLogin() {
+
+        alert(
+            "Google authentication will be connected soon."
+        );
+
+    }
+
+
+    /* GitHub */
+
+    function githubLogin() {
+
+        alert(
+            "GitHub authentication will be connected soon."
+        );
+
+    }
+
+</script>
+
+</body>
+</html>
+

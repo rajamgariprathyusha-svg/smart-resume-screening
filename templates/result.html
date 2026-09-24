@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Resume Analysis Report</title>
+
+    <link rel="stylesheet"
+        href="{{ url_for('static', filename='result.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🤖 Resume Analysis Report</h1>
+
+    <!-- Candidate Information -->
+    <div class="card">
+
+        <h2>👤 Candidate Information</h2>
+
+        <p><strong>Name:</strong> {{ candidate.name }}</p>
+
+        <p><strong>Email:</strong> {{ candidate.email }}</p>
+
+        <p><strong>Phone:</strong> {{ candidate.phone }}</p>
+
+    </div>
+
+    <!-- ATS Score -->
+    <div class="card score">
+
+        <h2>📊 ATS Match Score</h2>
+
+        <div class="circle">
+            {{ score }}%
+        </div>
+
+        <h3>{{ status }}</h3>
+
+        <h4>{{ rating }}</h4>
+
+    </div>
+    <div class="card">
+
+        <a href="/download_report">
+            <button class="download-btn">
+                📄 Download PDF Report
+            </button>
+        </a>
+
+    </div>
+
+    <!-- Resume Strength Analysis -->
+    <div class="card">
+
+        <h2>📋 Resume Strength Analysis</h2>
+
+        <table width="100%" cellpadding="10">
+
+            {% for key, value in strength.items() %}
+
+            <tr>
+                <td><strong>{{ key }}</strong></td>
+                <td>{{ value }}</td>
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+    </div>
+
+    <!-- Matched Skills -->
+    <div class="card">
+
+        <h2>✅ Matched Skills</h2>
+
+        <div class="skills">
+
+            {% if matched %}
+
+                {% for skill in matched %}
+
+                    <span>{{ skill }}</span>
+
+                {% endfor %}
+
+            {% else %}
+
+                <p>No matched skills found.</p>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+    <!-- Missing Skills -->
+    <div class="card">
+
+        <h2>❌ Missing Skills</h2>
+
+        <div class="missing">
+
+            {% if missing %}
+
+                {% for skill in missing %}
+
+                    <span>{{ skill }}</span>
+
+                {% endfor %}
+
+            {% else %}
+
+                <p>No missing skills.</p>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+    <!-- AI Suggestions -->
+    <div class="card">
+
+        <h2>💡 AI Suggestions</h2>
+
+        <ul>
+
+            {% for suggestion in suggestions %}
+
+                <li>{{ suggestion }}</li>
+
+            {% endfor %}
+
+        </ul>
+
+    </div>
+
+</div>
+<!-- Download Report Button -->
+
+<div class="card">
+
+    <a href="/download_report">
+        <button class="download-btn">
+            📄 Download PDF Report
+        </button>
+    </a>
+
+</div>
+
+</body>
+
+</html>
